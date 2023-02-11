@@ -7,10 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "xo",
-    "lint:fix": "xo --fix",
-    "format": "prettier --write --ignore-path .gitignore .",
-    "format:check": "prettier --check --ignore-path .gitignore ."
+    "check:link": "xo",
+    "fix:lint": "xo --fix",
+    "check:format": "prettier --check .",
+    "fix:format": "prettier --write ."
   },
   "dependencies": {
     "vue": "^3.2.45"
