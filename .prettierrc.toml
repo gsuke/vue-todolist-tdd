@@ -1,0 +1,4 @@
+# https://github.com/xojs/xo#prettier
+trailingComma = "es5"
+singleQuote = false
+bracketSpacing = true

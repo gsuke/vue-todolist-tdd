@@ -6,13 +6,19 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
+    "format": "prettier --write --ignore-path .gitignore .",
+    "format:check": "prettier --check --ignore-path .gitignore ."
   },
   "dependencies": {
     "vue": "^3.2.45"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
-    "vite": "^4.1.0"
+    "eslint-plugin-vue": "^9.9.0",
+    "vite": "^4.1.0",
+    "xo": "^0.53.1"
   }
 }
