@@ -11,16 +11,23 @@
     "fix:lint": "xo --fix",
     "check:format": "prettier --check .",
     "fix:format": "prettier --write .",
+    "test:run": "vitest run --environment jsdom",
+    "test:watch": "vitest --environment jsdom",
     "check:all": "run-s check:lint check:format"
   },
   "dependencies": {
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@testing-library/vue": "^6.6.1",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/test-utils": "^2.2.10",
     "eslint-plugin-vue": "^9.9.0",
+    "jsdom": "^21.1.0",
+    "msw": "^1.0.1",
     "npm-run-all": "^4.1.5",
     "vite": "^4.1.0",
+    "vitest": "^0.28.4",
     "xo": "^0.53.1"
   }
 }
