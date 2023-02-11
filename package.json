@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check:link": "xo",
+    "check:lint": "xo",
     "fix:lint": "xo --fix",
     "check:format": "prettier --check .",
-    "fix:format": "prettier --write ."
+    "fix:format": "prettier --write .",
+    "check:all": "run-s check:lint check:format"
   },
   "dependencies": {
     "vue": "^3.2.45"
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
     "eslint-plugin-vue": "^9.9.0",
+    "npm-run-all": "^4.1.5",
     "vite": "^4.1.0",
     "xo": "^0.53.1"
   }
