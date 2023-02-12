@@ -16,6 +16,7 @@
     "check:all": "run-s check:lint check:format"
   },
   "dependencies": {
+    "daisyui": "^2.50.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
