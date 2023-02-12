@@ -2,9 +2,13 @@ module.exports = {
   space: true,
   prettier: true,
 
-  plugins: ["tailwindcss"],
+  plugins: ["tailwindcss", "vuejs-accessibility"],
 
-  extends: ["plugin:tailwindcss/recommended", "plugin:vue/vue3-recommended"],
+  extends: [
+    "plugin:tailwindcss/recommended",
+    "plugin:vue/vue3-recommended",
+    "plugin:vuejs-accessibility/recommended",
+  ],
 
   extensions: ["vue"],
 
