@@ -6,6 +6,7 @@ specifiers:
   '@vue/test-utils': ^2.2.10
   autoprefixer: ^10.4.13
   daisyui: ^2.50.0
+  eslint-plugin-tailwindcss: ^3.8.3
   eslint-plugin-vue: ^9.9.0
   jsdom: ^21.1.0
   msw: ^1.0.1
@@ -26,6 +27,7 @@ devDependencies:
   '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
   '@vue/test-utils': 2.2.10_vue@3.2.47
   autoprefixer: 10.4.13_postcss@8.4.21
+  eslint-plugin-tailwindcss: 3.8.3_tailwindcss@3.2.6
   eslint-plugin-vue: 9.9.0
   jsdom: 21.1.0
   msw: 1.0.1
@@ -1907,6 +1909,17 @@ packages:
       eslint-config-prettier: 8.6.0_eslint@8.34.0
       prettier: 2.8.4
       prettier-linter-helpers: 1.0.0
+    dev: true
+
+  /eslint-plugin-tailwindcss/3.8.3_tailwindcss@3.2.6:
+    resolution: {integrity: sha512-wfzfCmc9yONNW+TqfR+QWZ+syFPQ8zMOrIGx500lS4XITEm0HJYGyKh1sC1tQ9+Wmt58bnHzW3Yc31vy5RlJww==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      tailwindcss: ^3.2.2
+    dependencies:
+      fast-glob: 3.2.12
+      postcss: 8.4.21
+      tailwindcss: 3.2.6_postcss@8.4.21
     dev: true
 
   /eslint-plugin-unicorn/44.0.2_eslint@8.34.0:

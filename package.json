@@ -24,6 +24,7 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/test-utils": "^2.2.10",
     "autoprefixer": "^10.4.13",
+    "eslint-plugin-tailwindcss": "^3.8.3",
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^21.1.0",
     "msw": "^1.0.1",
