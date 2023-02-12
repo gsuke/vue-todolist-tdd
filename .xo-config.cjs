@@ -4,6 +4,8 @@ module.exports = {
 
   extends: ["plugin:vue/vue3-recommended"],
 
+  extensions: ["vue"],
+
   rules: {
     "unicorn/filename-case": [
       "error",

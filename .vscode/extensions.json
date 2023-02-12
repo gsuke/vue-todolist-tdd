@@ -3,6 +3,7 @@
     "Vue.volar",
     "Vue.vscode-typescript-vue-plugin",
     "esbenp.prettier-vscode",
-    "samverschueren.linter-xo"
+    "samverschueren.linter-xo",
+    "csstools.postcss"
   ]
 }
