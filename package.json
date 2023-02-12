@@ -13,7 +13,8 @@
     "fix:format": "prettier --write .",
     "test:run": "vitest run --environment jsdom",
     "test:watch": "vitest --environment jsdom",
-    "check:all": "run-s check:lint check:format"
+    "check": "run-s check:lint check:format test:run",
+    "fix": "run-s fix:lint fix:format test:run"
   },
   "dependencies": {
     "daisyui": "^2.50.0",
