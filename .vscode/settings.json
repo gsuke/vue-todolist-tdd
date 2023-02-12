@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "xo.format.enable": true,
+  "[json][jsonc][html][css][scss][less][postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript][typescript][javascriptreact][typescriptreact][vue]": {
+    "editor.defaultFormatter": "samverschueren.linter-xo"
+  }
+}
