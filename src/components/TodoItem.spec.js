@@ -5,27 +5,27 @@ import TodoItem from "./TodoItem.vue";
 describe("TodoItem", () => {
   afterEach(cleanup);
 
+  function renderTodoItem(isDone = false, text = "Shopping") {
+    render(TodoItem, { props: { isDone, text } });
+  }
+
   it("has a checkbox", () => {
-    render(TodoItem);
-    const checkbox = screen.queryByRole("checkbox");
-    expect(checkbox).toBeTruthy();
+    renderTodoItem();
+    expect(screen.queryByRole("checkbox")).toBeTruthy();
   });
 
   it("shows a received ToDo text", () => {
-    render(TodoItem, { props: { text: "Shopping" } });
-    const text = screen.queryByText("Shopping");
-    expect(text).toBeTruthy();
+    renderTodoItem(false, "Shopping");
+    expect(screen.queryByText("Shopping")).toBeTruthy();
   });
 
   it("renders a checked checkbox if the task is done", () => {
-    render(TodoItem, { props: { isDone: true } });
-    const checkbox = screen.getByRole("checkbox");
-    expect(checkbox).toBeChecked();
+    renderTodoItem(true);
+    expect(screen.getByRole("checkbox")).toBeChecked();
   });
 
   it("renders a unchecked checkbox if the task is not done", () => {
-    render(TodoItem, { props: { isDone: false } });
-    const checkbox = screen.getByRole("checkbox");
-    expect(checkbox).not.toBeChecked();
+    renderTodoItem(false);
+    expect(screen.getByRole("checkbox")).not.toBeChecked();
   });
 });
