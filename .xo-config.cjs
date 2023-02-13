@@ -12,6 +12,8 @@ module.exports = {
 
   extensions: ["vue"],
 
+  globals: ["expect"],
+
   rules: {
     "unicorn/filename-case": [
       "error",
