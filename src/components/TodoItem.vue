@@ -1,6 +1,6 @@
 <template>
   <label :for="uid" class="label justify-start">
-    <input :id="uid" type="checkbox" checked="false" class="checkbox" />
+    <input :id="uid" type="checkbox" :checked="isDone" class="checkbox" />
     <div class="label-text ml-2">{{ text }}</div>
   </label>
 </template>
@@ -9,6 +9,7 @@
 const TodoItem = {
   props: {
     text: String,
+    isDone: Boolean,
   },
   computed: {
     uid() {
