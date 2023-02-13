@@ -1,6 +1,6 @@
 <template>
   <label :for="uid" class="label justify-start">
-    <input :id="uid" type="checkbox" :checked="isDone" class="checkbox" />
+    <input :id="uid" v-model="isDone" type="checkbox" class="checkbox" />
     <div class="label-text ml-2">{{ text }}</div>
   </label>
 </template>

@@ -9,12 +9,12 @@ describe("TodoItem", () => {
     render(TodoItem, { props: { isDone, text } });
   }
 
-  it("has a checkbox", () => {
+  it("renders a checkbox", () => {
     renderTodoItem();
     expect(screen.queryByRole("checkbox")).toBeTruthy();
   });
 
-  it("shows a received ToDo text", () => {
+  it("renders a received ToDo text", () => {
     renderTodoItem(false, "Shopping");
     expect(screen.queryByText("Shopping")).toBeTruthy();
   });

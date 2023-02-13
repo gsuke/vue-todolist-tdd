@@ -11,5 +11,5 @@ export default App;
 </script>
 
 <template>
-  <TodoItem text="Hello Task" />
+  <TodoItem is-done="true" text="Sample Task" />
 </template>
