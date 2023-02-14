@@ -1,5 +1,5 @@
 import { it, describe, afterEach } from "vitest";
-import { render, screen, cleanup } from "@testing-library/vue";
+import { render, screen, cleanup, fireEvent } from "@testing-library/vue";
 import TodoItem from "./TodoItem.vue";
 
 describe("TodoItem", () => {
@@ -27,5 +27,17 @@ describe("TodoItem", () => {
   it("renders a unchecked checkbox if the task is not done", () => {
     renderTodoItem(false);
     expect(screen.getByRole("checkbox")).not.toBeChecked();
+  });
+
+  it("emits click event and checked checkbox status when the unchecked checkbox is clicked", async () => {
+    const { getByRole, emitted } = renderTodoItem(false);
+    await fireEvent.click(getByRole("checkbox"));
+    expect(emitted("change")[0][0]).toBeTruthy();
+  });
+
+  it("emits click event and unchecked checkbox status when the checked checkbox is clicked", async () => {
+    const { getByRole, emitted } = renderTodoItem(true);
+    await fireEvent.click(getByRole("checkbox"));
+    expect(emitted("change")[0][0]).toBeFalsy();
   });
 });
