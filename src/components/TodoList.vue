@@ -4,6 +4,7 @@
       v-for="todo in todoList"
       :key="todo.uuid"
       :text="todo.text"
+      :is-done="todo.isDone"
     ></TodoItem>
   </ul>
 </template>

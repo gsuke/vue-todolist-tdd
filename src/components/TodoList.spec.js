@@ -1,11 +1,5 @@
 import { it, describe, afterEach } from "vitest";
-import {
-  render,
-  cleanup,
-  screen,
-  within,
-  prettyDOM,
-} from "@testing-library/vue";
+import { render, cleanup, screen, within } from "@testing-library/vue";
 import TodoList from "./TodoList.vue";
 
 describe("TodoList", () => {
@@ -67,6 +61,18 @@ describe("TodoList", () => {
         renderTodoList();
         const todoItem = screen.getAllByRole("listitem")[1];
         expect(within(todoItem).queryByText("Study math")).toBeTruthy();
+      });
+
+      it("renders a checked checkbox in the 1st TodoItem", () => {
+        renderTodoList();
+        const todoItem = screen.getAllByRole("listitem")[0];
+        expect(within(todoItem).getByRole("checkbox")).toBeChecked();
+      });
+
+      it("renders a unchecked checkbox in the 2st TodoItem", () => {
+        renderTodoList();
+        const todoItem = screen.getAllByRole("listitem")[1];
+        expect(within(todoItem).getByRole("checkbox")).not.toBeChecked();
       });
     });
   });
