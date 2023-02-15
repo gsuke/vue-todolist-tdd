@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul v-if="todoList.length > 0">
     <TodoItem
       v-for="todo in todoList"
       :key="todo.uuid"
@@ -7,6 +7,7 @@
       :is-done="todo.isDone"
     ></TodoItem>
   </ul>
+  <p v-else>タスクがありません。</p>
 </template>
 
 <script>

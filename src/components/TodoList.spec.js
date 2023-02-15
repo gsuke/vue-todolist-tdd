@@ -40,9 +40,25 @@ describe("TodoList", () => {
   }
 
   describe("layout", () => {
-    it("is a <ul> element", () => {
+    it("is a <ul> element if there are any tasks", () => {
       const { container } = renderTodoList();
       expect(container.firstChild.nodeName).toBe("UL");
+    });
+
+    describe("if there are no tasks", () => {
+      function renderEmptyTodoList() {
+        return render(TodoList, { props: { todoList: [] } });
+      }
+
+      it("is a <p> element", () => {
+        const { container } = renderEmptyTodoList();
+        expect(container.firstChild.nodeName).toBe("P");
+      });
+
+      it('renders "タスクがありません。" text', () => {
+        renderEmptyTodoList();
+        expect(screen.queryByText("タスクがありません。")).toBeTruthy();
+      });
     });
 
     describe("[Buy an apple(done), Study math(undone), something, something, something]", () => {
