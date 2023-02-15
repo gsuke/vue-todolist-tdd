@@ -1,16 +1,18 @@
 <template>
-  <label :for="uid" class="label justify-start">
-    <input
-      :id="uid"
-      :checked="isDone"
-      type="checkbox"
-      class="checkbox"
-      @change="change"
-    />
-    <div class="label-text ml-2" :class="{ 'line-through': isDone }">
-      {{ text }}
-    </div>
-  </label>
+  <li class="list-none">
+    <label :for="uid" class="label justify-start">
+      <input
+        :id="uid"
+        :checked="isDone"
+        type="checkbox"
+        class="checkbox"
+        @change="change"
+      />
+      <div class="label-text ml-2" :class="{ 'line-through': isDone }">
+        {{ text }}
+      </div>
+    </label>
+  </li>
 </template>
 
 <script>

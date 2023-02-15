@@ -29,6 +29,11 @@ describe("TodoItem", () => {
       renderTodoItem(false);
       expect(screen.getByRole("checkbox")).not.toBeChecked();
     });
+
+    it("is a <li> element", () => {
+      const { container } = renderTodoItem();
+      expect(container.firstChild.nodeName).toBe("LI");
+    });
   });
 
   describe("interaction", () => {
