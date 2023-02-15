@@ -1,6 +1,10 @@
 <template>
   <ul>
-    <TodoItem v-for="todo in todoList" :key="todo.uuid"></TodoItem>
+    <TodoItem
+      v-for="todo in todoList"
+      :key="todo.uuid"
+      :text="todo.text"
+    ></TodoItem>
   </ul>
 </template>
 

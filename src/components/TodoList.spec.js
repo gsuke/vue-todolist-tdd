@@ -1,5 +1,11 @@
 import { it, describe, afterEach } from "vitest";
-import { render, cleanup } from "@testing-library/vue";
+import {
+  render,
+  cleanup,
+  screen,
+  within,
+  prettyDOM,
+} from "@testing-library/vue";
 import TodoList from "./TodoList.vue";
 
 describe("TodoList", () => {
@@ -49,6 +55,18 @@ describe("TodoList", () => {
       it("renders 5 child elements", () => {
         renderTodoList();
         expect(document.querySelectorAll("ul > li").length).toBe(5);
+      });
+
+      it('renders a "Buy an apple" text in the 1st TodoItem', () => {
+        renderTodoList();
+        const todoItem = screen.getAllByRole("listitem")[0];
+        expect(within(todoItem).queryByText("Buy an apple")).toBeTruthy();
+      });
+
+      it('renders a "Study math" text in the 2nd TodoItem', () => {
+        renderTodoList();
+        const todoItem = screen.getAllByRole("listitem")[1];
+        expect(within(todoItem).queryByText("Study math")).toBeTruthy();
       });
     });
   });
