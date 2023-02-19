@@ -25,6 +25,16 @@ describe("init layout", () => {
     render(App);
     expect(screen.getByRole("button", { name: "追加" })).toBeDisabled();
   });
+
+  it("renders a button to delete done tasks", () => {
+    render(App);
+    expect(screen.queryByRole("button", { name: /削除/ })).toBeTruthy();
+  });
+
+  it("renders a disabled Delete button", () => {
+    render(App);
+    expect(screen.getByRole("button", { name: /削除/ })).toBeDisabled();
+  });
 });
 
 describe("interaction", () => {

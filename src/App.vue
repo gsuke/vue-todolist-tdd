@@ -40,7 +40,7 @@ export default App;
           aria-label="New ToDo text"
         />
         <button
-          class="btn btn-square px-1"
+          class="btn btn-square btn-primary px-1"
           :disabled="newTaskText.length <= 0"
           @click="addTodo"
         >
@@ -48,6 +48,10 @@ export default App;
         </button>
       </div>
     </div>
+
+    <button class="btn btn-accent btn-sm mx-auto mb-5 block" disabled>
+      完了済みタスクを削除する
+    </button>
 
     <TodoList :todo-list="todoList" />
   </div>
