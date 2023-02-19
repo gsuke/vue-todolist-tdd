@@ -21,4 +21,9 @@ describe("init layout", () => {
     renderApp();
     expect(screen.queryByRole("button", { name: "追加" })).toBeTruthy();
   });
+
+  it("renders a disabled button to add new Todo", () => {
+    renderApp();
+    expect(screen.getByRole("button", { name: "追加" })).toBeDisabled();
+  });
 });

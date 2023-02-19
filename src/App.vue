@@ -26,7 +26,7 @@ export default App;
           class="input input-bordered w-full"
           aria-label="New ToDo text"
         />
-        <button class="btn btn-square px-1">追加</button>
+        <button class="btn btn-square px-1" disabled>追加</button>
       </div>
     </div>
 
