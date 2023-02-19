@@ -24,7 +24,7 @@ const TodoItem = {
   },
   methods: {
     change(event) {
-      this.$emit("change", event.target.checked);
+      this.$emit("change", { id: this.id, isChecked: event.target.checked });
     },
   },
   emits: ["change"],

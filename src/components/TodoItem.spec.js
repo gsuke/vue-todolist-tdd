@@ -39,16 +39,22 @@ describe("TodoItem", () => {
   });
 
   describe("interaction", () => {
-    it("emits click event and checked checkbox status when the unchecked checkbox is clicked", async () => {
+    it("emits click event, id and checked checkbox status when the unchecked checkbox is clicked", async () => {
       const { getByRole, emitted } = renderTodoItem(false);
       await fireEvent.click(getByRole("checkbox"));
-      expect(emitted("change")[0][0]).toBeTruthy();
+      expect(emitted("change")[0][0]).toStrictEqual({
+        id: "9731860b-3658-4029-8e74-29e10e22e777",
+        isChecked: true,
+      });
     });
 
-    it("emits click event and unchecked checkbox status when the checked checkbox is clicked", async () => {
+    it("emits click event, id and unchecked checkbox status when the checked checkbox is clicked", async () => {
       const { getByRole, emitted } = renderTodoItem(true);
       await fireEvent.click(getByRole("checkbox"));
-      expect(emitted("change")[0][0]).toBeFalsy();
+      expect(emitted("change")[0][0]).toStrictEqual({
+        id: "9731860b-3658-4029-8e74-29e10e22e777",
+        isChecked: false,
+      });
     });
   });
 });
