@@ -7,6 +7,8 @@ function renderApp() {
   return render(App);
 }
 
+const user = userEvent.setup();
+
 describe("init layout", () => {
   it('renders a "タスクがありません。" text', () => {
     renderApp();
@@ -32,21 +34,18 @@ describe("init layout", () => {
 describe("interaction", () => {
   it("enables the Add button when there is text in the text field", async () => {
     renderApp();
-    const user = userEvent.setup();
     await user.type(screen.queryByLabelText("New ToDo text"), "Shopping");
     expect(screen.getByRole("button", { name: "追加" })).toBeEnabled();
   });
 
   it("renders a text in the text field when the text is entered", async () => {
     renderApp();
-    const user = userEvent.setup();
     await user.type(screen.queryByLabelText("New ToDo text"), "Shopping");
     expect(screen.queryByLabelText("New ToDo text")).toHaveValue("Shopping");
   });
 
   it("empties the text field when the Add button is clicked", async () => {
     renderApp();
-    const user = userEvent.setup();
 
     const textField = screen.queryByLabelText("New ToDo text");
     const addButton = screen.getByRole("button", { name: "追加" });
@@ -60,7 +59,6 @@ describe("interaction", () => {
   describe("when a Todo is added", () => {
     it("renders new ToDo item", async () => {
       renderApp();
-      const user = userEvent.setup();
 
       const textField = screen.queryByLabelText("New ToDo text");
       const addButton = screen.getByRole("button", { name: "追加" });
@@ -73,7 +71,6 @@ describe("interaction", () => {
 
     it("renders correct new Todo text", async () => {
       renderApp();
-      const user = userEvent.setup();
 
       const textField = screen.queryByLabelText("New ToDo text");
       const addButton = screen.getByRole("button", { name: "追加" });
@@ -88,7 +85,6 @@ describe("interaction", () => {
 
     it("renders a unchecked checkbox", async () => {
       renderApp();
-      const user = userEvent.setup();
 
       const textField = screen.queryByLabelText("New ToDo text");
       const addButton = screen.getByRole("button", { name: "追加" });
