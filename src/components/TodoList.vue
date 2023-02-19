@@ -2,9 +2,11 @@
   <ul v-if="todoList.length > 0">
     <TodoItem
       v-for="todo in todoList"
+      :id="todo.uuid"
       :key="todo.uuid"
       :text="todo.text"
       :is-done="todo.isDone"
+      @change="change"
     ></TodoItem>
   </ul>
   <p v-else>タスクがありません。</p>
@@ -20,6 +22,12 @@ const TodoList = {
   components: {
     TodoItem,
   },
+  methods: {
+    change(parameters) {
+      this.$emit("change", parameters);
+    },
+  },
+  emits: ["change"],
 };
 
 export default TodoList;

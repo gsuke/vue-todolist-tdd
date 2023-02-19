@@ -1,5 +1,5 @@
 import { it, describe } from "vitest";
-import { render, screen, within } from "@testing-library/vue";
+import { render, screen, within, fireEvent } from "@testing-library/vue";
 import TodoList from "./TodoList.vue";
 
 describe("if there are no tasks", () => {
@@ -81,9 +81,20 @@ describe("if there are any tasks: [Buy an apple(done), Study math(undone), somet
     expect(within(todoItem).getByRole("checkbox")).toBeChecked();
   });
 
-  it("renders a unchecked checkbox in the 2st TodoItem", () => {
+  it("renders a unchecked checkbox in the 2nd TodoItem", () => {
     renderTodoList();
     const todoItem = screen.getAllByRole("listitem")[1];
     expect(within(todoItem).getByRole("checkbox")).not.toBeChecked();
+  });
+
+  it("emits click event, id and unchecked checkbox status when the 1st TodoItem's checkbox is clicked", async () => {
+    const { getAllByRole, emitted } = renderTodoList();
+    await fireEvent.click(
+      within(getAllByRole("listitem")[0]).getByRole("checkbox")
+    );
+    expect(emitted("change")[0][0]).toStrictEqual({
+      id: "ffa03467-b6f0-4334-800d-6ab642dcbc7b",
+      isChecked: false,
+    });
   });
 });
