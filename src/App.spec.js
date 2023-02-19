@@ -30,10 +30,30 @@ describe("init layout", () => {
 });
 
 describe("interaction", () => {
-  it("renders an enabled Add button when there is text in the text field", async () => {
+  it("enables the Add button when there is text in the text field", async () => {
     renderApp();
     const user = userEvent.setup();
     await user.type(screen.queryByLabelText("New ToDo text"), "Shopping");
     expect(screen.getByRole("button", { name: "追加" })).toBeEnabled();
+  });
+
+  it("renders a text in the text field when the text is entered", async () => {
+    renderApp();
+    const user = userEvent.setup();
+    await user.type(screen.queryByLabelText("New ToDo text"), "Shopping");
+    expect(screen.queryByLabelText("New ToDo text")).toHaveValue("Shopping");
+  });
+
+  it("empties the text field when the Add button is clicked", async () => {
+    renderApp();
+    const user = userEvent.setup();
+
+    const textField = screen.queryByLabelText("New ToDo text");
+    const addButton = screen.getByRole("button", { name: "追加" });
+
+    await user.type(textField, "Shopping");
+    await user.click(addButton);
+
+    expect(textField).toHaveValue("");
   });
 });

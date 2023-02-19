@@ -11,6 +11,11 @@ const App = {
   components: {
     TodoList,
   },
+  methods: {
+    addTask() {
+      this.newTaskText = "";
+    },
+  },
 };
 
 export default App;
@@ -28,7 +33,11 @@ export default App;
           class="input input-bordered w-full"
           aria-label="New ToDo text"
         />
-        <button class="btn btn-square px-1" :disabled="newTaskText.length <= 0">
+        <button
+          class="btn btn-square px-1"
+          :disabled="newTaskText.length <= 0"
+          @click="addTask"
+        >
           追加
         </button>
       </div>
