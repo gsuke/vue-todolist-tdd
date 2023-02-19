@@ -1,11 +1,12 @@
 <h1 align="center">✅ ToDoリスト (Vue + TDD)</h1>
 <p align="center">
-    <img src="./.github/preview.webp" align="center" width="350px">
-</p>
+<img src="preview.webp" align="center" width="350px">
 
 ![Build status](https://img.shields.io/github/actions/workflow/status/gsuke/vue-todolist-tdd/main.yaml?branch=main)
 ![License](https://img.shields.io/github/license/gsuke/vue-todolist-tdd)
 ![Repository size](https://img.shields.io/github/repo-size/gsuke/vue-todolist-tdd)
+
+</p>
 
 ## 💬 概要
 
