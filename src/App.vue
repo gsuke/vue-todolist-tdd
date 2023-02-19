@@ -38,6 +38,9 @@ const App = {
         return todo;
       });
     },
+    deleteDoneTodo() {
+      this.todoList = this.todoList.filter((todo) => !todo.isDone);
+    },
   },
 };
 
@@ -69,6 +72,7 @@ export default App;
     <button
       class="btn btn-accent btn-sm mx-auto mb-5 block"
       :disabled="!existsDoneTask"
+      @click="deleteDoneTodo"
     >
       完了済みタスクを削除する
     </button>

@@ -1,4 +1,4 @@
-import { it, describe } from "vitest";
+import { it, describe, expect } from "vitest";
 import { render, screen, within } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 import App from "./App.vue";
@@ -94,6 +94,31 @@ describe("interaction", () => {
       const { listItem } = await renderAppAndAddTodo();
       await user.click(within(listItem).getByRole("checkbox"));
       expect(screen.queryByRole("button", { name: /削除/ })).toBeEnabled();
+    });
+  });
+
+  describe("when a task is deleted", () => {
+    async function renderAppAndAdd2TasksAndDeleteTask() {
+      const { getByLabelText, getByRole, getAllByRole } = render(App);
+      const textField = getByLabelText("New ToDo text");
+      const addButton = getByRole("button", { name: "追加" });
+
+      await user.type(textField, "Buy an apple");
+      await user.click(addButton);
+
+      await user.type(textField, "Study math");
+      await user.click(addButton);
+
+      const todoList = getAllByRole("listitem");
+      await user.click(within(todoList[0]).getByRole("checkbox"));
+
+      const deleteButton = getByRole("button", { name: /削除/ });
+      await user.click(deleteButton);
+    }
+
+    it("reduces the number of displayed ListItems", async () => {
+      await renderAppAndAdd2TasksAndDeleteTask();
+      expect(screen.getAllByRole("listitem").length).toBe(1);
     });
   });
 });
