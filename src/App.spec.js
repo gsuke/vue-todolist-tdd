@@ -1,5 +1,6 @@
 import { it, describe } from "vitest";
 import { render, screen } from "@testing-library/vue";
+import userEvent from "@testing-library/user-event";
 import App from "./App.vue";
 
 function renderApp() {
@@ -22,8 +23,17 @@ describe("init layout", () => {
     expect(screen.queryByRole("button", { name: "追加" })).toBeTruthy();
   });
 
-  it("renders a disabled button to add new Todo", () => {
+  it("renders a disabled Add button", () => {
     renderApp();
     expect(screen.getByRole("button", { name: "追加" })).toBeDisabled();
+  });
+});
+
+describe("interaction", () => {
+  it("renders an enabled Add button when there is text in the text field", async () => {
+    renderApp();
+    const user = userEvent.setup();
+    await user.type(screen.queryByLabelText("New ToDo text"), "Shopping");
+    expect(screen.getByRole("button", { name: "追加" })).toBeEnabled();
   });
 });
