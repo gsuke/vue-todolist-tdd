@@ -56,4 +56,17 @@ describe("interaction", () => {
 
     expect(textField).toHaveValue("");
   });
+
+  it("renders new ToDo item when a ToDo is added", async () => {
+    renderApp();
+    const user = userEvent.setup();
+
+    const textField = screen.queryByLabelText("New ToDo text");
+    const addButton = screen.getByRole("button", { name: "追加" });
+
+    await user.type(textField, "Shopping");
+    await user.click(addButton);
+
+    expect(screen.queryAllByRole("listitem").length).toBe(1);
+  });
 });

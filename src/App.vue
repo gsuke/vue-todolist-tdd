@@ -1,4 +1,5 @@
 <script>
+import { v4 as uuidv4 } from "uuid";
 import TodoList from "./components/TodoList.vue";
 
 const App = {
@@ -12,7 +13,12 @@ const App = {
     TodoList,
   },
   methods: {
-    addTask() {
+    addTodo() {
+      this.todoList.push({
+        id: uuidv4(),
+        isDone: false,
+        text: this.newTaskText,
+      });
       this.newTaskText = "";
     },
   },
@@ -36,7 +42,7 @@ export default App;
         <button
           class="btn btn-square px-1"
           :disabled="newTaskText.length <= 0"
-          @click="addTask"
+          @click="addTodo"
         >
           追加
         </button>
