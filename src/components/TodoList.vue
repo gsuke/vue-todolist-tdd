@@ -2,8 +2,8 @@
   <ul v-if="todoList.length > 0">
     <TodoItem
       v-for="todo in todoList"
-      :id="todo.uuid"
-      :key="todo.uuid"
+      :id="todo.id"
+      :key="todo.id"
       :text="todo.text"
       :is-done="todo.isDone"
       @change="change"

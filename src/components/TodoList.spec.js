@@ -24,27 +24,27 @@ describe("if there are any tasks: [Buy an apple(done), Study math(undone), somet
       props: {
         todoList: [
           {
-            uuid: "ffa03467-b6f0-4334-800d-6ab642dcbc7b",
+            id: "ffa03467-b6f0-4334-800d-6ab642dcbc7b",
             text: "Buy an apple",
             isDone: true,
           },
           {
-            uuid: "36703c99-66c0-4ef0-88d2-34bd505d9957",
+            id: "36703c99-66c0-4ef0-88d2-34bd505d9957",
             text: "Study math",
             isDone: false,
           },
           {
-            uuid: "2001d56c-c212-4364-8ddc-606c0886baef",
+            id: "2001d56c-c212-4364-8ddc-606c0886baef",
             text: "Something1",
             isDone: false,
           },
           {
-            uuid: "ad3205aa-4465-4ee0-9f8e-c02c320311b2",
+            id: "ad3205aa-4465-4ee0-9f8e-c02c320311b2",
             text: "Something2",
             isDone: true,
           },
           {
-            uuid: "dad7887d-f709-47a1-ae6a-efa3da81d21e",
+            id: "dad7887d-f709-47a1-ae6a-efa3da81d21e",
             text: "Something3",
             isDone: true,
           },
