@@ -40,11 +40,6 @@ describe("TodoList", () => {
   }
 
   describe("layout", () => {
-    it("is a <ul> element if there are any tasks", () => {
-      const { container } = renderTodoList();
-      expect(container.firstChild.nodeName).toBe("UL");
-    });
-
     describe("if there are no tasks", () => {
       function renderEmptyTodoList() {
         return render(TodoList, { props: { todoList: [] } });
@@ -61,7 +56,12 @@ describe("TodoList", () => {
       });
     });
 
-    describe("[Buy an apple(done), Study math(undone), something, something, something]", () => {
+    describe("if there are any tasks: [Buy an apple(done), Study math(undone), something, something, something]", () => {
+      it("is a <ul> element", () => {
+        const { container } = renderTodoList();
+        expect(container.firstChild.nodeName).toBe("UL");
+      });
+
       it("renders 5 child elements", () => {
         renderTodoList();
         expect(document.querySelectorAll("ul > li").length).toBe(5);
