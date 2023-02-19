@@ -12,7 +12,7 @@ describe("if there are no tasks", () => {
     expect(container.firstChild.nodeName).toBe("P");
   });
 
-  it('renders "タスクがありません。" text', () => {
+  it('renders a "タスクがありません。" text', () => {
     renderEmptyTodoList();
     expect(screen.queryByText("タスクがありません。")).toBeTruthy();
   });

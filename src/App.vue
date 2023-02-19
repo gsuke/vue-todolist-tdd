@@ -1,19 +1,14 @@
 <script>
-import TodoItem from "./components/TodoItem.vue";
+import TodoList from "./components/TodoList.vue";
 
 const App = {
   data() {
     return {
-      isDone: false,
+      todoList: [],
     };
   },
   components: {
-    TodoItem,
-  },
-  methods: {
-    change(isDone) {
-      this.isDone = isDone;
-    },
+    TodoList,
   },
 };
 
@@ -21,5 +16,5 @@ export default App;
 </script>
 
 <template>
-  <TodoItem v-model:is-done="isDone" text="Sample Task" @change="change" />
+  <TodoList :todo-list="todoList" />
 </template>
