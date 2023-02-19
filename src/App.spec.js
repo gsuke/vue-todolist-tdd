@@ -6,9 +6,19 @@ function renderApp() {
   return render(App);
 }
 
-describe("layout", () => {
+describe("init layout", () => {
   it('renders a "タスクがありません。" text', () => {
     renderApp();
     expect(screen.queryByText("タスクがありません。")).toBeTruthy();
+  });
+
+  it("renders a text field to add new ToDo", () => {
+    renderApp();
+    expect(screen.queryByLabelText("New ToDo text")).toBeTruthy();
+  });
+
+  it("renders a button to add new Todo", () => {
+    renderApp();
+    expect(screen.queryByRole("button", { name: "追加" })).toBeTruthy();
   });
 });
