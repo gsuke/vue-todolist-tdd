@@ -1,10 +1,24 @@
-import { it, describe, afterEach } from "vitest";
-import { render, cleanup, screen, within } from "@testing-library/vue";
+import { it, describe } from "vitest";
+import { render, screen, within } from "@testing-library/vue";
 import TodoList from "./TodoList.vue";
 
-describe("TodoList", () => {
-  afterEach(cleanup);
+describe("if there are no tasks", () => {
+  function renderEmptyTodoList() {
+    return render(TodoList, { props: { todoList: [] } });
+  }
 
+  it("is a <p> element", () => {
+    const { container } = renderEmptyTodoList();
+    expect(container.firstChild.nodeName).toBe("P");
+  });
+
+  it('renders "タスクがありません。" text', () => {
+    renderEmptyTodoList();
+    expect(screen.queryByText("タスクがありません。")).toBeTruthy();
+  });
+});
+
+describe("if there are any tasks: [Buy an apple(done), Study math(undone), something, something, something]", () => {
   function renderTodoList() {
     return render(TodoList, {
       props: {
@@ -39,57 +53,37 @@ describe("TodoList", () => {
     });
   }
 
-  describe("layout", () => {
-    describe("if there are no tasks", () => {
-      function renderEmptyTodoList() {
-        return render(TodoList, { props: { todoList: [] } });
-      }
+  it("is a <ul> element", () => {
+    const { container } = renderTodoList();
+    expect(container.firstChild.nodeName).toBe("UL");
+  });
 
-      it("is a <p> element", () => {
-        const { container } = renderEmptyTodoList();
-        expect(container.firstChild.nodeName).toBe("P");
-      });
+  it("renders 5 child elements", () => {
+    renderTodoList();
+    expect(document.querySelectorAll("ul > li").length).toBe(5);
+  });
 
-      it('renders "タスクがありません。" text', () => {
-        renderEmptyTodoList();
-        expect(screen.queryByText("タスクがありません。")).toBeTruthy();
-      });
-    });
+  it('renders a "Buy an apple" text in the 1st TodoItem', () => {
+    renderTodoList();
+    const todoItem = screen.getAllByRole("listitem")[0];
+    expect(within(todoItem).queryByText("Buy an apple")).toBeTruthy();
+  });
 
-    describe("if there are any tasks: [Buy an apple(done), Study math(undone), something, something, something]", () => {
-      it("is a <ul> element", () => {
-        const { container } = renderTodoList();
-        expect(container.firstChild.nodeName).toBe("UL");
-      });
+  it('renders a "Study math" text in the 2nd TodoItem', () => {
+    renderTodoList();
+    const todoItem = screen.getAllByRole("listitem")[1];
+    expect(within(todoItem).queryByText("Study math")).toBeTruthy();
+  });
 
-      it("renders 5 child elements", () => {
-        renderTodoList();
-        expect(document.querySelectorAll("ul > li").length).toBe(5);
-      });
+  it("renders a checked checkbox in the 1st TodoItem", () => {
+    renderTodoList();
+    const todoItem = screen.getAllByRole("listitem")[0];
+    expect(within(todoItem).getByRole("checkbox")).toBeChecked();
+  });
 
-      it('renders a "Buy an apple" text in the 1st TodoItem', () => {
-        renderTodoList();
-        const todoItem = screen.getAllByRole("listitem")[0];
-        expect(within(todoItem).queryByText("Buy an apple")).toBeTruthy();
-      });
-
-      it('renders a "Study math" text in the 2nd TodoItem', () => {
-        renderTodoList();
-        const todoItem = screen.getAllByRole("listitem")[1];
-        expect(within(todoItem).queryByText("Study math")).toBeTruthy();
-      });
-
-      it("renders a checked checkbox in the 1st TodoItem", () => {
-        renderTodoList();
-        const todoItem = screen.getAllByRole("listitem")[0];
-        expect(within(todoItem).getByRole("checkbox")).toBeChecked();
-      });
-
-      it("renders a unchecked checkbox in the 2st TodoItem", () => {
-        renderTodoList();
-        const todoItem = screen.getAllByRole("listitem")[1];
-        expect(within(todoItem).getByRole("checkbox")).not.toBeChecked();
-      });
-    });
+  it("renders a unchecked checkbox in the 2st TodoItem", () => {
+    renderTodoList();
+    const todoItem = screen.getAllByRole("listitem")[1];
+    expect(within(todoItem).getByRole("checkbox")).not.toBeChecked();
   });
 });
