@@ -1,5 +1,5 @@
 import { it, describe } from "vitest";
-import { render, screen } from "@testing-library/vue";
+import { render, screen, within } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 import App from "./App.vue";
 
@@ -57,16 +57,48 @@ describe("interaction", () => {
     expect(textField).toHaveValue("");
   });
 
-  it("renders new ToDo item when a ToDo is added", async () => {
-    renderApp();
-    const user = userEvent.setup();
+  describe("when a Todo is added", () => {
+    it("renders new ToDo item", async () => {
+      renderApp();
+      const user = userEvent.setup();
 
-    const textField = screen.queryByLabelText("New ToDo text");
-    const addButton = screen.getByRole("button", { name: "追加" });
+      const textField = screen.queryByLabelText("New ToDo text");
+      const addButton = screen.getByRole("button", { name: "追加" });
 
-    await user.type(textField, "Shopping");
-    await user.click(addButton);
+      await user.type(textField, "Shopping");
+      await user.click(addButton);
 
-    expect(screen.queryAllByRole("listitem").length).toBe(1);
+      expect(screen.queryAllByRole("listitem").length).toBe(1);
+    });
+
+    it("renders correct new Todo text", async () => {
+      renderApp();
+      const user = userEvent.setup();
+
+      const textField = screen.queryByLabelText("New ToDo text");
+      const addButton = screen.getByRole("button", { name: "追加" });
+
+      await user.type(textField, "Shopping");
+      await user.click(addButton);
+
+      const listItem = screen.getAllByRole("listitem")[0];
+
+      expect(within(listItem).queryByText("Shopping")).toBeTruthy();
+    });
+
+    it("renders a unchecked checkbox", async () => {
+      renderApp();
+      const user = userEvent.setup();
+
+      const textField = screen.queryByLabelText("New ToDo text");
+      const addButton = screen.getByRole("button", { name: "追加" });
+
+      await user.type(textField, "Shopping");
+      await user.click(addButton);
+
+      const listItem = screen.getAllByRole("listitem")[0];
+
+      expect(within(listItem).queryByRole("checkbox")).not.toBeChecked();
+    });
   });
 });
