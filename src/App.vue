@@ -12,6 +12,11 @@ const App = {
   components: {
     TodoList,
   },
+  computed: {
+    existsDoneTask() {
+      return this.todoList.some((todo) => todo.isDone);
+    },
+  },
   methods: {
     addTodo() {
       this.todoList.push({
@@ -20,6 +25,18 @@ const App = {
         text: this.newTaskText,
       });
       this.newTaskText = "";
+    },
+    checkTodo(parameters) {
+      this.todoList = this.todoList.map((todo) => {
+        if (todo.id === parameters.id) {
+          return {
+            ...todo,
+            isDone: parameters.isChecked,
+          };
+        }
+
+        return todo;
+      });
     },
   },
 };
@@ -49,10 +66,13 @@ export default App;
       </div>
     </div>
 
-    <button class="btn btn-accent btn-sm mx-auto mb-5 block" disabled>
+    <button
+      class="btn btn-accent btn-sm mx-auto mb-5 block"
+      :disabled="!existsDoneTask"
+    >
       完了済みタスクを削除する
     </button>
 
-    <TodoList :todo-list="todoList" />
+    <TodoList :todo-list="todoList" @change="checkTodo" />
   </div>
 </template>

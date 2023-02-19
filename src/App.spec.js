@@ -84,5 +84,16 @@ describe("interaction", () => {
       const { listItem } = await renderAppAndAddTodo();
       expect(within(listItem).queryByRole("checkbox")).not.toBeChecked();
     });
+
+    it("leaves the Delete button disabled", async () => {
+      await renderAppAndAddTodo();
+      expect(screen.queryByRole("button", { name: /削除/ })).toBeDisabled();
+    });
+
+    it("enables the Delete Button when a checkbox is checked", async () => {
+      const { listItem } = await renderAppAndAddTodo();
+      await user.click(within(listItem).getByRole("checkbox"));
+      expect(screen.queryByRole("button", { name: /削除/ })).toBeEnabled();
+    });
   });
 });
