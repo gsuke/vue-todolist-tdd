@@ -1,7 +1,7 @@
 <h1 align="center">✅ ToDoリスト (Vue + TDD)</h1>
 
 <p align="center">
-    <img src=".github/preview.webp" align="center" width="350px">
+    <img src=".github/preview.webp" align="center">
 </p>
 
 <p align="center">
