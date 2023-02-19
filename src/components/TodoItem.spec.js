@@ -6,7 +6,9 @@ describe("TodoItem", () => {
   afterEach(cleanup);
 
   function renderTodoItem(isDone = false, text = "Shopping") {
-    return render(TodoItem, { props: { isDone, text } });
+    return render(TodoItem, {
+      props: { id: "9731860b-3658-4029-8e74-29e10e22e777", isDone, text },
+    });
   }
 
   describe("layout", () => {

@@ -1,8 +1,8 @@
 <template>
   <li class="list-none">
-    <label :for="uid" class="label justify-start">
+    <label :for="id" class="label justify-start">
       <input
-        :id="uid"
+        :id="id"
         :checked="isDone"
         type="checkbox"
         class="checkbox"
@@ -18,13 +18,9 @@
 <script>
 const TodoItem = {
   props: {
+    id: String,
     isDone: Boolean,
     text: String,
-  },
-  computed: {
-    uid() {
-      return String(this.$.uid);
-    },
   },
   methods: {
     change(event) {
